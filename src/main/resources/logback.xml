@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 修改部分 如果有job需要监控，单独修改 -->
+	<property name="file_path" value="/data/logs/coin-markets" />
+	<property name="app" value="coin-markets" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-%msg%n</pattern>
+		</encoder>
+		<!-- <filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+	    </filter> -->
+	</appender>
+
+	<!-- 所有日志 -->
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${file_path}/rolling/${app}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-%msg%n</pattern>
+		</encoder>
+		<!-- <filter class="ch.qos.logback.classic.filter.LevelFilter">
+		    <level>INFO</level>
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter> -->
+		
+	</appender>
+
+<!-- ###################### SQL日志监控  ###################### -->
+	<appender name="SqlStatistics"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${file_path}/sql/${app}_sql_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-%msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<logger name="java.sql.Connection" level="DEBUG">
+		<appender-ref ref="SqlStatistics" />
+	</logger>
+	<logger name="java.sql.Statement" level="DEBUG">
+		<appender-ref ref="SqlStatistics" />
+	</logger>
+	<logger name="java.sql.PreparedStatement" level="DEBUG">
+		<appender-ref ref="SqlStatistics" />
+	</logger>
+
+<!-- ###################### SQL日志监控  ###################### -->
+
+
+
+<!-- ###################### DAO日志监控  ###################### -->
+	<appender name="DaoStatistics"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${file_path}/dao/${app}_dao_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-%msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<logger name="com.ecms.service.dao" level="DEBUG">
+		<appender-ref ref="DaoStatistics" />
+	</logger>
+
+<!-- ###################### SQL日志监控  ###################### -->
+	<appender name="errorFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${file_path}/error/${app}_%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>60</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36}-%msg%n</pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+		    <level>ERROR</level>
+		    <onMatch>ACCEPT</onMatch>
+		    <onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+
+	<root level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="RollingFile" />
+		<appender-ref ref="errorFile"/>
+	</root>
+
+</configuration>

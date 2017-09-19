@@ -1,0 +1,162 @@
+server:
+  port: 8000
+  context-path: /coins/
+wechat:
+  appid: xxxx
+  appsecret: xxxx
+  token: xxxx
+  encodingaeskey: xxxxx
+  pay:
+    key: xxxx
+    mchid: xxxx
+gotoken:
+  aes-key: xxxxx
+  ico:
+    iconpath: /data/ico/icon/
+    push:
+      third: 172800000           #第三次发送时间   
+      second: 345600000          #第二次
+  sms:
+    appid: xxxx
+    secret-key: xxxx
+    host: xxxx
+    algorithm: xxxx
+spring:
+  aop:
+    proxy-target-class: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  mvc:
+    throw-exception-if-no-handler-found: true #出现错误时 直接抛出异常
+    static-path-pattern: /static/**
+  resources:
+    add-mappings: false                       #不要为我们工程中的资源文件建立映射
+  application:
+    name: coin-markets
+  freemarker:
+    cache: true
+    allow-request-override: false
+    charset: UTF-8
+    enabled: true
+    template-loader-path: classpath:/templates/
+    content-type: text/html; charset=utf-8
+    suffix: .html
+    check-template-location: true
+    expose-request-attributes: true
+    expose-session-attributes: false
+    expose-spring-macro-helpers: true
+    request-context-attribute: "ctx"
+    settings:
+      classic_compatible: true
+      template_update_delay: 1
+      datetime_format: yyyy-MM-dd
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      #number_format: #.##
+      whitespace_stripping: true
+      default_encoding: UTF-8
+      tag_syntax: auto_detect
+      url_escaping_charset: UTF-8
+    
+  datasource:
+    url: jdbc:mysql://localhost:3306/coin_market?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initialSize: 1
+      minIdle: 1
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 'x'
+      testWhileIdle: true
+      testOnBorrow: flase
+      testOnReturn: false
+      poolPreparedStatements: false
+      maxPoolPreparedStatementPerConnectionSize: 20
+      removeAbandoned: true
+      removeAbandonedTimeout: 7200
+      logAbandoned: true
+      filters: stat,slf4j,wall
+      statPointCut: com.baipengx.service.impl.*
+  redis:
+    host: localhost
+    port: 6379
+    password: 123456
+    timeout: 10000
+    pool:
+      max-active: 20
+      max-wait: 2
+      max-idle: 20
+      min-idle: 5
+logging:
+  file: logback.xml
+  level:
+    root: debug
+mybatis:
+    #type-aliases-package: tk.mybatis.springboot.model
+    mapper-locations: classpath:*Mapper.xml
+
+mapper:
+    mappers:
+        - tk.mybatis.mapper.common.Mapper
+    not-empty: false
+    i-d-e-n-t-i-t-y: MYSQL
+    
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+coins:
+  icon:
+    dir: /data/coins/icon/
+debug: true
+
+---
+server:
+  port: 8080
+  context-path: /test/
+
+spring:
+  profiles: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/coins_ico_test?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=true
+    username: xxxx
+    password: xxxx
+  redis:
+    host: xxxxx
+    password: xxxxx
+logging:
+  file: /data/coins-ico-test/coins-ico.log
+  level:
+    root: debug
+---
+gotoken:
+  sms:
+    appid: xxxxx
+    secret-key: xxxxxx
+endpoints:
+  shutdown:
+    enabled: true
+    sensitive: false
+management:
+  address: 127.0.0.1
+  port: 9000
+spring:
+  profiles: prd
+  datasource: 
+    url: jdbc:mysql://localhost:3306/coin_market?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=true
+    username: xxxx
+    password: xxxx
+  redis:
+    host: xxxx
+    password: xxxx
+logging:
+  level:
+    root: warn

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry
+		location="/Users/siwei/.m2/repository/mysql/mysql-connector-java/5.1.30/mysql-connector-java-5.1.30.jar" />
+	<!-- <context id="MBG" targetRuntime="MyBatis3" defaultModelType="conditional"> -->	<!--targetRuntime 此属性用于指定生成的代码的运行目标。 -->
+	<context id="MBG" targetRuntime="MyBatis3">
+		<!-- <plugin type="org.mybatis.generator.plugins.MapperConfigPlugin"> <property 
+			name="fileName" value="GeneratedMapperConfig.xml" /> <property name="targetPackage" 
+			value="com.easyway.app.core.mgr" /> <property name="targetProject" value="../java" 
+			/> </plugin> -->
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+		<plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+		<!-- <plugin type="tk.mybatis.mapper.generator.MapperPlugin"> -->
+		<!-- <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/> -->
+		<!-- </plugin> -->
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />  <!-- 避免生成注解信息 -->
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/coin_market" userId="root"
+			password="123456" />
+
+		<!-- 类型解析器 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 实体类 -->
+		<javaModelGenerator targetPackage="com.baipengx.coin.model"
+			targetProject="coin-markets">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- 实体类SQL映射文件 -->
+		<sqlMapGenerator targetPackage="com.baipengx.coin.dao"
+			targetProject="coin-markets/src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.baipengx.coin.dao" targetProject="coin-markets">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+<!-- 		<table tableName="coin_detail" domainObjectName="Coin"> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="global_info" domainObjectName="GlobalInfo"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true" /> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="coin_history" domainObjectName="CoinHistory"> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="global_history" domainObjectName="GlobalHistory"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true" /> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="wechat_userinfo" domainObjectName="WechatUserInfo"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true" /> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="wechat_message" domainObjectName="WechatMessage"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true" /> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="wechat_pay_order" domainObjectName="WechatPayOrder"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="order_suffix_pool" domainObjectName="OrderSuffixPool"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>			 -->
+<!-- 		<table tableName="sms" domainObjectName="SMS"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>		 -->
+<!-- 		<table tableName="ico_items" domainObjectName="IcoItems"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="link" domainObjectName="Link"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>	 -->
+<!-- 		<table tableName="news" domainObjectName="News"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table> -->
+<!-- 		<table tableName="activity_user" domainObjectName="ActivityUser"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>	 -->
+<!-- 		<table tableName="activity_ad" domainObjectName="ActivityAd"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table> -->
+		<table tableName="grade_test" domainObjectName="GradeTest">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+		</table>	
+<!-- 		<table tableName="ico_label" domainObjectName="IcoLabel"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>	 -->
+<!-- 		<table tableName="ico_star" domainObjectName="IcoStar"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>	 -->
+<!-- 		<table tableName="coin_push" domainObjectName="CoinPush"> -->
+<!-- 			<generatedKey column="id" sqlStatement="Mysql" identity="true"/> -->
+<!-- 		</table>					 -->
+	</context>
+</generatorConfiguration>
