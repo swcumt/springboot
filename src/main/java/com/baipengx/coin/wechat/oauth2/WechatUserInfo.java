@@ -81,21 +81,20 @@ public class WechatUserInfo {
 	public void setUnionid(String unionid) {
 		this.unionid = unionid;
 	}
-	
-	
-	public com.baipengx.coin.model.WechatUserInfo toModel(){
-		com.baipengx.coin.model.WechatUserInfo wu = new com.baipengx.coin.model.WechatUserInfo();
-		wu.setCity(this.city);
-		wu.setCountry(this.country);
-		wu.setHeadimg(this.headimagurl);
-		wu.setIsSubscribed(false);
-		wu.setNickName(this.nickname);
-		wu.setUnionId(this.unionid);
-		wu.setNickName(this.nickname);
-		wu.setOpenid(this.openid);
-		wu.setProvince(this.province);
-		wu.setSex("1".equals(this.sex)? "M":"F");
-		return wu;
+
+	@Override
+	public String toString() {
+		return "WechatUserInfo{" +
+				"openid='" + openid + '\'' +
+				", nickname='" + nickname + '\'' +
+				", sex='" + sex + '\'' +
+				", province='" + province + '\'' +
+				", city='" + city + '\'' +
+				", country='" + country + '\'' +
+				", headimagurl='" + headimagurl + '\'' +
+				", privilege=" + privilege +
+				", unionid='" + unionid + '\'' +
+				'}';
 	}
 }
 	

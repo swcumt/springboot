@@ -23,14 +23,10 @@ package com.baipengx.coin.api.coinmarketcap.vo;
 }
  */
 
-import java.math.BigDecimal;
-
-import com.baipengx.coin.model.Coin;
 import com.google.gson.annotations.SerializedName;
 
-import lombok.Data;
+import java.math.BigDecimal;
 
-@Data
 public class CoinVo {
 	private String id;
 	private String name;
@@ -58,28 +54,156 @@ public class CoinVo {
 	private BigDecimal percent_change_7d;
 	private BigDecimal percent_change_24h;
 	private Long last_updated;
-	
-	public Coin toModel(){
-		Coin coin = new Coin();
-		coin.setId(this.id);
-		coin.setAvailableSupply(this.available_supply);
-		coin.setLastUpdated(this.last_updated);
-		coin.setMacketCapBtc(this.market_cap_btc);
-		coin.setMacketCapCny(this.market_cap_cny);
-		coin.setMacketCapUsd(this.market_cap_usd);
-		coin.setName(this.name);
-		coin.setPercentChange1h(this.percent_change_1h);
-		coin.setPercentChange24h(this.percent_change_24h);
-		coin.setPercentChange7d(this.percent_change_7d);
-		coin.setPriceBtc(this.price_btc);
-		coin.setPriceCny(this.price_cny);
-		coin.setPriceUsd(this.price_usd);
-		coin.setRank(this.rank);
-		coin.setSymbol(this.symbol);
-		coin.setTotalSupply(this.total_supply);
-		coin.setVolumeBtc24h(this.volume_btc_24h);
-		coin.setVolumeCny24h(this.volume_cny_24h);
-		coin.setVolumeUsd24h(this.volume_usd_24h);
-		return coin;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
+	public void setSymbol(String symbol) {
+		this.symbol = symbol;
+	}
+
+	public Integer getRank() {
+		return rank;
+	}
+
+	public void setRank(Integer rank) {
+		this.rank = rank;
+	}
+
+	public BigDecimal getPrice_usd() {
+		return price_usd;
+	}
+
+	public void setPrice_usd(BigDecimal price_usd) {
+		this.price_usd = price_usd;
+	}
+
+	public BigDecimal getPrice_btc() {
+		return price_btc;
+	}
+
+	public void setPrice_btc(BigDecimal price_btc) {
+		this.price_btc = price_btc;
+	}
+
+	public BigDecimal getPrice_cny() {
+		return price_cny;
+	}
+
+	public void setPrice_cny(BigDecimal price_cny) {
+		this.price_cny = price_cny;
+	}
+
+	public BigDecimal getVolume_usd_24h() {
+		return volume_usd_24h;
+	}
+
+	public void setVolume_usd_24h(BigDecimal volume_usd_24h) {
+		this.volume_usd_24h = volume_usd_24h;
+	}
+
+	public BigDecimal getVolume_cny_24h() {
+		return volume_cny_24h;
+	}
+
+	public void setVolume_cny_24h(BigDecimal volume_cny_24h) {
+		this.volume_cny_24h = volume_cny_24h;
+	}
+
+	public BigDecimal getVolume_btc_24h() {
+		return volume_btc_24h;
+	}
+
+	public void setVolume_btc_24h(BigDecimal volume_btc_24h) {
+		this.volume_btc_24h = volume_btc_24h;
+	}
+
+	public BigDecimal getMarket_cap_usd() {
+		return market_cap_usd;
+	}
+
+	public void setMarket_cap_usd(BigDecimal market_cap_usd) {
+		this.market_cap_usd = market_cap_usd;
+	}
+
+	public BigDecimal getMarket_cap_cny() {
+		return market_cap_cny;
+	}
+
+	public void setMarket_cap_cny(BigDecimal market_cap_cny) {
+		this.market_cap_cny = market_cap_cny;
+	}
+
+	public BigDecimal getMarket_cap_btc() {
+		return market_cap_btc;
+	}
+
+	public void setMarket_cap_btc(BigDecimal market_cap_btc) {
+		this.market_cap_btc = market_cap_btc;
+	}
+
+	public BigDecimal getAvailable_supply() {
+		return available_supply;
+	}
+
+	public void setAvailable_supply(BigDecimal available_supply) {
+		this.available_supply = available_supply;
+	}
+
+	public BigDecimal getTotal_supply() {
+		return total_supply;
+	}
+
+	public void setTotal_supply(BigDecimal total_supply) {
+		this.total_supply = total_supply;
+	}
+
+	public BigDecimal getPercent_change_1h() {
+		return percent_change_1h;
+	}
+
+	public void setPercent_change_1h(BigDecimal percent_change_1h) {
+		this.percent_change_1h = percent_change_1h;
+	}
+
+	public BigDecimal getPercent_change_7d() {
+		return percent_change_7d;
+	}
+
+	public void setPercent_change_7d(BigDecimal percent_change_7d) {
+		this.percent_change_7d = percent_change_7d;
+	}
+
+	public BigDecimal getPercent_change_24h() {
+		return percent_change_24h;
+	}
+
+	public void setPercent_change_24h(BigDecimal percent_change_24h) {
+		this.percent_change_24h = percent_change_24h;
+	}
+
+	public Long getLast_updated() {
+		return last_updated;
+	}
+
+	public void setLast_updated(Long last_updated) {
+		this.last_updated = last_updated;
 	}
 }

@@ -18,10 +18,10 @@ public class BusinessProcessData {
 	private DataDetail remark;
 
 	public BusinessProcessData() {
-		this.first = new DataDetail("你好，淘宝指数提醒如下：", "#173177");
-		this.keyword2 = new DataDetail("淘宝指数", "#173177");
-		this.keyword3 = new DataDetail("淘宝指数查询完成", "#173177");
-		this.remark = new DataDetail("您的淘宝指数已完成查询，点击查看具体指数，感谢您的使用！", "#173177");
+//		this.first = new DataDetail("你好，淘宝指数提醒如下：", "#173177");
+//		this.keyword2 = new DataDetail("淘宝指数", "#173177");
+//		this.keyword3 = new DataDetail("淘宝指数查询完成", "#173177");
+//		this.remark = new DataDetail("您的淘宝指数已完成查询，点击查看具体指数，感谢您的使用！", "#173177");
 	}
 
 	public DataDetail getFirst() {

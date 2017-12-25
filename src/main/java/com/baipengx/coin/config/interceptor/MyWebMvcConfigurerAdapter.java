@@ -14,21 +14,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 	@Autowired
 	private OAuth2Interceptor oauth2Interceptor;
-	@Autowired
-	private TicketInterceptor ticketInterceptor;
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		registry.addInterceptor(oauth2Interceptor)
-				.addPathPatterns("/ico/wechat/**")
-				.addPathPatterns("/pay/**")
-				.addPathPatterns("/activity/**")
-				.addPathPatterns("/home")
-				.addPathPatterns("/test/**")
-				.excludePathPatterns("/ico/wechat/oauthed", "/ico/wechat/common/**")
-				.excludePathPatterns("/activity/1")
-				.excludePathPatterns("/activity/en/1")
-				.excludePathPatterns("/activity/myticket/**")
-				.excludePathPatterns("/pay/report");
-		registry.addInterceptor(ticketInterceptor).addPathPatterns("/activity/ticket/**");
+				.addPathPatterns("/**")
+				.excludePathPatterns("/join").excludePathPatterns("/authed");
 	}
 }

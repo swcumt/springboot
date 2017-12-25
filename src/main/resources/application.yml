@@ -1,10 +1,10 @@
 server:
-  port: 8000
-  context-path: /coins/
+  port: 80
+  context-path: /
 wechat:
-  appid: xxxx
-  appsecret: xxxx
-  token: xxxx
+  appid: wx9599c4c0c63ed3df
+  appsecret: 81a280bb3aa64ef780b8d7af12f76e4e
+  token: baixinfentest
   encodingaeskey: xxxxx
   pay:
     key: xxxx
@@ -60,9 +60,9 @@ spring:
       url_escaping_charset: UTF-8
     
   datasource:
-    url: jdbc:mysql://localhost:3306/coin_market?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=true
+    url: jdbc:mysql://localhost:3306/thc_uo?autoReconnect=true&failOverReadOnly=false&maxReconnects=10&useSSL=true
     username: root
-    password: 123456
+    password: mysql
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -86,7 +86,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password: 123456
+    password:
     timeout: 10000
     pool:
       max-active: 20

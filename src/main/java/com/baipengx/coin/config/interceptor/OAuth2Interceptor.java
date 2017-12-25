@@ -36,7 +36,7 @@ public class OAuth2Interceptor extends BaseController implements HandlerIntercep
 		else {
 			response.sendRedirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + config.getAppid()
 					+ "&redirect_uri=" + getRootPath(request)
-					+ "/ico/wechat/oauthed"+URLEncoder.encode("?request-uri=" + request.getRequestURL().toString() + (StringUtils.isEmpty(request.getQueryString())? "" : "?" + request.getQueryString()), "utf-8") +"&response_type=code&scope=snsapi_userinfo&state=2017#wechat_redirect");
+					+ "/authed"+URLEncoder.encode("?request-uri=" + request.getRequestURL().toString() + (StringUtils.isEmpty(request.getQueryString())? "" : "?" + request.getQueryString()), "utf-8") +"&response_type=code&scope=snsapi_userinfo&state=2017#wechat_redirect");
 		}
 		return false;
 	}

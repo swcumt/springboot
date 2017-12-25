@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.baipengx.coin.controller.BaseController;
-import com.baipengx.coin.service.WechatUserInfoService;
 import com.baipengx.coin.wechat.message.resp.TextMessage;
 import com.baipengx.coin.wechat.util.MessageUtil;
 
@@ -20,9 +19,6 @@ import com.baipengx.coin.wechat.util.MessageUtil;
  */
 @Component
 public class WechatService extends BaseController {
-
-	@Autowired
-	private WechatUserInfoService userService;
 
 	@Autowired
 	private TokenService tokenService;
@@ -60,12 +56,7 @@ public class WechatService extends BaseController {
 				respContent = "";
 				String content = requestMap.get("Content");
 				if (!StringUtils.isEmpty(content) && "彩蛋".equals(content.trim())) {
-					respContent = "最新下款成功率排行榜：\n"
-							+ "1、<a href =\"https://m.daxiaodai.com/hd/active/html/wifi_tab.html?source=gc-llcs-channel5\">大小贷</a>\n"
-							+ "2、<a href =\"https://api.daishangqian.com/vue/?channel=58eaf2e471b3#/active/promotion\">贷上钱</a>\n"
-							+ "3、<a href =\"http://channel.xianjinxia.com/act/light-loan-xjx?invite_code=MjYxNTczNw==&user_from=577\">极速现金侠</a>\n"
-							+ "4、<a href =\"https://activity.jiandanjiekuan.com/html/register_getNewUser.html?channelCode=1b73e64b00e042cdac036489a9f5faf9\">简单借款</a>\n"
-							+ "5、<a href =\"https://onecard.9fbank.com/wkCubeNew/#/register?proId=dtj9181c9c0179c4e3bae3d9cecf336d002\">玖富万卡 </a>\n";
+					respContent = "现在没有彩蛋";
 				}
 			}
 			// 图片消息
@@ -94,15 +85,11 @@ public class WechatService extends BaseController {
 				String eventType = requestMap.get("Event");
 				// 关注
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-					respContent = "hi，各位看官。你终于来了！！！\n" + "网贷、银行卡、QQ三大指数，一网打尽。\n" + "知己知彼，下款无忧！\n"
-							+ "查询戳下方：<a href=\"http://wx.daikuantoutiao.com/wechat/home\">百信分</a>\n\n" +
-
-							"有什么问题，直接后台留言哟！";
+					respContent = "欢迎关注测试号！";
 				}
 				// 取消关注
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) {
 					// TODO 取消订阅后用户不会再收到公众账号发送的消息，因此不需要回复
-					userService.update2UnSubscribe(fromUserName);
 				}
 				// 扫描带参数二维码
 				else if (eventType.equals(MessageUtil.EVENT_TYPE_SCAN)) {
